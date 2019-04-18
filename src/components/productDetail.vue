@@ -4,10 +4,7 @@
     </div>
 </template>
 
-<script>
-    export default {
-        name: "productDetail"
-    }
+<script lang="ts">
 </script>
 
 <style scoped>
