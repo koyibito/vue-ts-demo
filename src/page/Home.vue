@@ -9,8 +9,13 @@
 
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
+    import ProductDetails from '../components/ProductDetail.vue';
 
-    @Component
+    @Component ({
+        components: {
+            ProductDetails,
+        },
+    })
     export default class Home extends Vue {}
 </script>
 
