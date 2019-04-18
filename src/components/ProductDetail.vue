@@ -1,6 +1,8 @@
 <template>
     <div>
-        <p>我是一个产品详情组件</p>
+        <div class="content" v-if="visible">
+            <p>我是一个产品详情组件</p>
+        </div>
     </div>
 </template>
 
@@ -10,7 +12,7 @@
     @Component
     export default class ProductDetail extends Vue {
         @Prop({ default: false })
-        visible!: boolean;
+        private visible!: boolean;
     }
 </script>
 

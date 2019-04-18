@@ -5,8 +5,8 @@
             <p>关于我们</p>
         </router-link>
         <div>
-            <p>ProductDetail 组件部分</p>
-            <product-detail></product-detail>
+            <p v-on:click="switchProductDetail">点击【显示-隐藏】ProductDetail</p>
+            <product-detail :visible="isShowProductDetail"></product-detail>
         </div>
     </div>
 </template>
@@ -20,7 +20,14 @@
             ProductDetail,
         },
     })
-    export default class Home extends Vue {}
+    export default class Home extends Vue {
+
+        private isShowProductDetail: boolean = false;
+
+        private switchProductDetail(): void {
+            this.isShowProductDetail = !this.isShowProductDetail;
+        }
+    }
 </script>
 
 <style scoped>
