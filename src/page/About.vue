@@ -11,7 +11,7 @@
     @Component
     export default class About extends Vue {
         private back(): void {
-          console.log('aaaaa');
+          this.$router.go(-1);
         }
     }
 </script>
