@@ -63,6 +63,6 @@ module.exports = {
             "/api2": {
                 target: "<other_url>"
             }
-        }
+        },
     }
 }
