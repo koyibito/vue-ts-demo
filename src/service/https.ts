@@ -51,7 +51,7 @@ service.interceptors.response.use(
                     console.log('网络超时');
                     break;
                 default:
-                    console.log(`连接错误${err.response.status}`)
+                    console.log(`连接错误${err.response.status}`);
             }
         } else {
             console.log("Server connection failed...");
@@ -77,8 +77,8 @@ export function get(url: string, params: any = {}, data: any = null) {
             resolve(response.data);
         }).catch((error: any) => {
             reject(error);
-        })
-    })
+        });
+    });
 }
 
 /**
@@ -93,8 +93,8 @@ export function post(url: string, data: any = null) {
             resolve(response.data);
         },(error: any) => {
             reject(error);
-        })
-    })
+        });
+    });
 }
 
 
