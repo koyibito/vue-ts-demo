@@ -43,7 +43,7 @@
             this.parentCount = n;
         }
 
-        private ParentPromise(value: number): string {
+        private ParentPromise(value: any): any {
             return value + '';
         }
     }
