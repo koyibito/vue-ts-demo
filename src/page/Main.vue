@@ -4,15 +4,19 @@
             <router-link to="/home">
                 <p>父子组件传值</p>
             </router-link>
+            <router-link to="/lifeCycle">
+                <p>生命周期函数</p>
+            </router-link>
         </div>
     </div>
 </template>
 
 <script>
-    import { Component, Vue } from 'vue-property-decorator';
+    import {Component, Vue} from 'vue-property-decorator';
 
-    @Component ({})
-    export default class Main extends Vue {}
+    @Component({})
+    export default class Main extends Vue {
+    }
 </script>
 
 <style scoped>
