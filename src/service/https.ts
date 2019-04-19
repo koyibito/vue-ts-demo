@@ -73,7 +73,7 @@ export function get(url: string, params: any = {}, data: any = null) {
             url += '?'+qs.stringify(data);
         }
         axios.get(url,{
-            params:params
+             params: params,
         }).then((response: any) => {
             resolve(response.data);
         }).catch((error: any) => {
@@ -87,10 +87,10 @@ export function get(url: string, params: any = {}, data: any = null) {
  * @param url
  * @param data
  * return {promise}
- * */
+ * **/
 export function post(url: string, data: any = null) {
     return new Promise((resolve: any, reject: any) => {
-        axios.post(url,qs.stringify(data)).then((response: any) => {
+        axios.post(url, qs.stringify(data)).then((response: any) => {
             resolve(response.data);
         }, (error: any) => {
             reject(error);
