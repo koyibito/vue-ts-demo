@@ -3,6 +3,7 @@ import qs from 'qs';
 
 // 创建axios实例
 let service: any = {};
+
 if (process.env.NODE_ENV === "development") {
     service = axios.create({
         baseURL: "/api", // api的base_url
@@ -91,7 +92,7 @@ export function post(url: string, data: any = null) {
     return new Promise((resolve: any, reject: any) => {
         axios.post(url,qs.stringify(data)).then((response: any) => {
             resolve(response.data);
-        },(error: any) => {
+        }, (error: any) => {
             reject(error);
         });
     });
