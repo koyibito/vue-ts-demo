@@ -19,6 +19,11 @@ export default new Router({
       component: () => import('./page/Home.vue'),
     },
     {
+      path: '/netRequest',
+      name: 'netRequest',
+      component: () => import('./page/NetRequest.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

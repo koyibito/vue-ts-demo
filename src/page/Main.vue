@@ -7,6 +7,9 @@
             <router-link to="/lifeCycle">
                 <p>生命周期函数</p>
             </router-link>
+            <router-link to="/netRequest">
+                <p>网络请求</p>
+            </router-link>
         </div>
     </div>
 </template>
