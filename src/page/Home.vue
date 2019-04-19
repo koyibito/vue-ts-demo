@@ -6,7 +6,7 @@
         </router-link>
         <div>
             <p v-on:click="switchProductDetail">点击【显示-隐藏】ProductDetail</p>
-            <product-detail :visible="isShowProductDetail" v-on:callParent="alertInfo"></product-detail>
+            <product-detail :visible="isShowProductDetail" v-on:call-parent="alertInfo" v-on:call="callInfo"></product-detail>
         </div>
     </div>
 </template>
@@ -29,7 +29,11 @@
         }
 
         private alertInfo(): void {
-            console.log('子组件调用父组件方法');
+            console.log('子组件调用父组件alertInfo()方法');
+        }
+
+        private callInfo(info: string): void {
+            console.log(`子组件调用父组件callInfo()方法,传入参数 ${info}`);
         }
     }
 </script>

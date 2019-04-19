@@ -2,7 +2,7 @@
     <div>
         <div class="content" v-if="visible">
             <p>我是一个产品详情组件</p>
-            <p v-on:click="callParent">点我调用父组件的方法</p>
+            <p v-on:click="callMethods">点我调用父组件的方法</p>
         </div>
     </div>
 </template>
@@ -15,9 +15,19 @@
         @Prop({ default: false })
         private visible!: boolean;
 
+        private callMethods(): void {
+            this.callParent();
+            this.callParentTwo();
+        }
+
         @Emit()
         private callParent(): void {
-            console.log('我是产品详情组件内容');
+            console.log('我是产品详情组件callParent方法');
+        }
+
+        @Emit('call')
+        private callParentTwo(): string {
+            return '【ts 非常好！！！ 哈哈哈哈】';
         }
     }
 </script>
