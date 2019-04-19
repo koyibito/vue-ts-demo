@@ -6,7 +6,9 @@
         </router-link>
         <div>
             <p v-on:click="switchProductDetail">点击【显示-隐藏】ProductDetail</p>
-            <product-detail :visible="isShowProductDetail" v-on:call-parent="alertInfo" v-on:call="callInfo"></product-detail>
+            <p>parentCount: {{parentCount}}</p>
+            <product-detail :visible="isShowProductDetail" v-on:add-to-count="ParentAddToCount" v-on:reset="ParentResetCount"
+                            v-on:return-value="ParentReturnValue" v-on:promise = "ParentPromise"></product-detail>
         </div>
     </div>
 </template>
@@ -22,18 +24,27 @@
     })
     export default class Home extends Vue {
 
+        private parentCount: number = 0;
         private isShowProductDetail: boolean = false;
 
         private switchProductDetail(): void {
             this.isShowProductDetail = !this.isShowProductDetail;
         }
 
-        private alertInfo(): void {
-            console.log('子组件调用父组件alertInfo()方法');
+        private ParentAddToCount(n: number): number {
+            return this.parentCount = this.parentCount + n;
         }
 
-        private callInfo(info: string): void {
-            console.log(`子组件调用父组件callInfo()方法,传入参数 ${info}`);
+        private ParentResetCount(): void {
+            this.parentCount = 0;
+        }
+
+        private ParentReturnValue(n: number): void {
+            this.parentCount = n;
+        }
+
+        private ParentPromise(value: number): string {
+            return value + '';
         }
     }
 </script>
