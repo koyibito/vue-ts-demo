@@ -70,9 +70,9 @@ service.interceptors.response.use(
 export function get(url: string, params: any = {}, data: any = null) {
     return new Promise((resolve: any, reject: any) => {
         if(data){
-            url += '?'+qs.stringify(data);
+            url += '?' + qs.stringify(data);
         }
-        axios.get(url,{
+        axios.get( url,  {
              params: params,
         }).then((response: any) => {
             resolve(response.data);
@@ -87,7 +87,7 @@ export function get(url: string, params: any = {}, data: any = null) {
  * @param url
  * @param data
  * return {promise}
- * **/
+**/
 export function post(url: string, data: any = null) {
     return new Promise((resolve: any, reject: any) => {
         axios.post(url, qs.stringify(data)).then((response: any) => {

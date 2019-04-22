@@ -12,6 +12,9 @@
             <router-link to="/netRequest">
                 <li>3.网络请求</li>
             </router-link>
+            <router-link to="/store">
+                <li>3.vuex</li>
+            </router-link>
         </ul>
     </div>
 </template>

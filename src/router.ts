@@ -36,5 +36,10 @@ export default new Router({
       name: 'lifeCycle',
       component: () => import('./page/LifeCycle.vue'),
     },
+    {
+      path: '/store',
+      name: 'store',
+      component: () => import('./page/Store.vue'),
+    },
   ],
 });
