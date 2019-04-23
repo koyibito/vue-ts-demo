@@ -5,10 +5,10 @@
 </template>
 
 <script lang='ts'>
-    import {Component, Vue} from "vue-property-decorator";
+    import {Component, Vue} from 'vue-property-decorator';
 
     @Component({})
-    export default class store extends Vue {
+    export default class Store extends Vue {
     }
 </script>
 

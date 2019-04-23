@@ -1,43 +1,37 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import qs from 'qs';
 
-// 创建axios实例
-let service: any = {};
+// 超时重新请求配置
+const axiosConfig: AxiosRequestConfig = {
+    baseURL: process.env.NODE_ENV === 'development' ? '/api' : '/',
+    timeout: 60 * 1000,
+    withCredentials: true,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json',
+    },
+};
 
-if (process.env.NODE_ENV === "development") {
-    service = axios.create({
-        baseURL: "/api", // api的base_url
-        timeout: 60 * 1000, // 请求超时时间
-        withCredentials: true
-    });
-} else {
-    // 生产环境下
-    service = axios.create({
-        baseURL: "", // api的base_url
-        timeout: 60 * 1000, // 请求超时时间
-        withCredentials: true
-    });
-}
+// 修改axios配置信息
+const service: any = axios.create(axiosConfig);
 
-//http request 拦截器
+// http request 拦截器
 service.interceptors.request.use(
     (config: any) => {
-        config.headers['Content-Type'] = 'application/x-www-form-urlencoded',
-        config.headers['Accept'] = 'application/json'
         return config;
     },
     (error: any) => {
         return Promise.reject(error);
-    }
+    },
 );
 
-//http response 拦截器
+// http response 拦截器
 service.interceptors.response.use(
     (response: any) => {
         return response;
     },
     (err: any) => {
-        if(err && err.response){
+        if ( err && err.response) {
             switch (err.response.status) {
                 case 404:
                     console.log('请求错误,未找到该资源');
@@ -58,23 +52,12 @@ service.interceptors.response.use(
             console.log("Server connection failed...");
         }
         return Promise.resolve(err.response);
-    }
+    },
 );
 
-/**
- * get request
- * @param url
- * @param params
- * return {promise}
- * */
-export function get(url: string, params: any = {}, data: any = null) {
+export function get(url: string, data: any = null) {
     return new Promise((resolve: any, reject: any) => {
-        if(data){
-            url += '?' + qs.stringify(data);
-        }
-        axios.get( url,  {
-             params: params,
-        }).then((response: any) => {
+        service.get( url, { params: data }).then((response: any) => {
             resolve(response.data);
         }).catch((error: any) => {
             reject(error);
@@ -82,15 +65,9 @@ export function get(url: string, params: any = {}, data: any = null) {
     });
 }
 
-/**
- * post request
- * @param url
- * @param data
- * return {promise}
-**/
 export function post(url: string, data: any = null) {
     return new Promise((resolve: any, reject: any) => {
-        axios.post(url, qs.stringify(data)).then((response: any) => {
+        service.post(url, qs.stringify(data)).then((response: any) => {
             resolve(response.data);
         }, (error: any) => {
             reject(error);
