@@ -4,16 +4,19 @@
         <div id="title">vue 教程</div>
         <ul class="list">
             <router-link to="/home">
-                <li>1.父子组件传值</li>
+                <li>父子组件传值</li>
             </router-link>
             <router-link to="/lifeCycle">
-                <li>2.生命周期函数</li>
+                <li>生命周期函数</li>
             </router-link>
             <router-link to="/netRequest">
-                <li>3.网络请求</li>
+                <li>网络请求</li>
             </router-link>
             <router-link to="/store">
-                <li>3.vuex</li>
+                <li>vuex</li>
+            </router-link>
+            <router-link to="/router">
+                <li>router</li>
             </router-link>
         </ul>
     </div>

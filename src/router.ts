@@ -41,5 +41,10 @@ export default new Router({
       name: 'store',
       component: () => import('./page/Store.vue'),
     },
+    {
+      path: '/router',
+      name: 'router',
+      component: () => import('./page/Router.vue'),
+    },
   ],
 });
